@@ -192,4 +192,3 @@ db.vacunaciones.insert(
       )._id
   }
 )
-
