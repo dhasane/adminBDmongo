@@ -112,11 +112,19 @@ db.createCollection(
           },
           acepto: {
             bsonType: 'bool',
+<<<<<<< HEAD
             description: 'must be a boolean and is required'
           },
           asistira: {
             bsonType: 'bool',
             description: 'must be a boolean and is required'
+=======
+            description: 'must be a bool and is required'
+          },
+          asistira: {
+            bsonType: 'bool',
+            description: 'must be a bool and is required'
+>>>>>>> 56f6c622daa96cc9d4e4c8664869c071e370a639
           },
           cita: {
             bsonType: 'object',
@@ -190,11 +198,19 @@ db.createCollection(
           },
           reaccion: {
             bsonType: 'bool',
+<<<<<<< HEAD
             description: 'must be a boolean and is required'
           },
           acompanhado: {
             bsonType: 'bool',
             description: 'must be a boolean and is required'
+=======
+            description: 'must be a bool and is required'
+          },
+          acompanhado: {
+            bsonType: 'bool',
+            description: 'must be a bool and is required'
+>>>>>>> 56f6c622daa96cc9d4e4c8664869c071e370a639
           },
           vacuna: {
             bsonType: 'objectId',
