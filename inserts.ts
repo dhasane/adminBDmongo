@@ -142,9 +142,19 @@ db.vacunaciones.aggregate(
     {$group: {
       _id: {
         nombre: "$vacuna.nombre",
-        llamada: "$llamada",
-        persona: "$persona"
       },
+      Cantidad: {$sum: 1},
+      Hombres: {$sum:
+                {$cond: {if: {$in: ["hombre", "$persona.genero"]},
+                         then: 1,
+                         else: 0
+                        }
+                }},
+      Mujeres: {$sum:
+                {$cond: {if: {$in: ["mujer", "$persona.genero"]},
+                         then: 1,
+                         else: 0
+                        }
+                }}
     }}
   ]).pretty()
-
