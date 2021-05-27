@@ -353,12 +353,13 @@ db.llamadas.insert(
 
 db.vacunaciones.insert(
   {
-    idLlamada: db.llamadas.find(
+    idLlamada: db.llamadas.findOne(
       {
         date: fecha,
         persona: usr
-      }
-    ),
+      },
+      {_id: 1}
+    )._id,
     fecha: new Date(),
     reaccion: false,
     acompanhado: true,
