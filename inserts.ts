@@ -239,3 +239,31 @@ db.vacunaciones.aggregate(
                 }}
     }}
   ]).pretty()
+
+db.vacunaciones.aggregate(
+  [
+    {$match: {}},
+    {
+      $lookup: {
+        from: "llamadas",
+        localField: "idLlamada",
+        foreignField: "_id",
+        as: "llamada"
+      }
+    },
+    {
+      $lookup: {
+        from: "centrosVacunacion",
+        localField: "llamada.cita.centroVacunacion",
+        foreignField: "_id",
+        as: "centroVacunacion"
+      }
+    },
+    {$group: {
+      _id: {
+        nombre: "$centroVacunacion.nombre",
+        llamada: "$vacunacion"
+      },
+      cantidad: {$sum: 1}
+    }}
+  ]).pretty()
