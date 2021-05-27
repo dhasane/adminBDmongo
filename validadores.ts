@@ -35,7 +35,6 @@ db.createCollection(
           },
           genero: {
             bsonType: 'string',
-            enum: ["hombre", "mujer"],
             description: 'must be a string and is required'
           },
           edad: {
@@ -191,11 +190,12 @@ db.createCollection(
           },
           reaccion: {
             bsonType: 'bool',
-            description: 'must be a bool and is required'
+            description: 'must be a boolean and is required'
           },
           acompanhado: {
             bsonType: 'bool',
-            description: 'must be a bool and is required'
+            description: 'must be a boolean and is required'
+
           },
           vacuna: {
             bsonType: 'objectId',
