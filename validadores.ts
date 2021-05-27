@@ -106,11 +106,11 @@ db.createCollection(
             description: 'must be a number and is required'
           },
           acepto: {
-            bsonType: 'boolean',
+            bsonType: 'bool',
             description: 'must be a boolean and is required'
-          }
+          },
           asistira: {
-            bsonType: 'boolean',
+            bsonType: 'bool',
             description: 'must be a boolean and is required'
           },
           cita: {
