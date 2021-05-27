@@ -7,6 +7,7 @@ db.createCollection(
         bsonType: 'object',
         required: [
           'tipoDocumento',
+          'nombre',
           'documento',
           'ciudad',
           'genero',
@@ -19,6 +20,10 @@ db.createCollection(
             bsonType: 'string',
             enum: ["CC", "TI", "CE", "NIP", "NIT"],
             description: 'must be "CC" or "TI" or "CE" or "NIP" or "NIT" and is required'
+          },
+          nombre: {
+            bsonType: 'string',
+            description: 'must be a string and is required'
           },
           documento: {
             bsonType: 'string',

@@ -32,6 +32,7 @@ db.centrosVacunacion.insert(
 db.personas.insert(
   {
     tipoDocumento: "CC",
+    nombre: "Albin Yakitory",
     documento: "123412123",
     ciudad: db.ciudad.findOne(
       {
