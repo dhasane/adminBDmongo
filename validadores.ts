@@ -30,6 +30,7 @@ db.createCollection(
           },
           genero: {
             bsonType: 'string',
+            enum: ["hombre", "mujer"],
             description: 'must be a string and is required'
           },
           edad: {

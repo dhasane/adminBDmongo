@@ -39,7 +39,7 @@ db.personas.insert(
       },
       {_id: 1}
     )._id,
-    genero: "genero",
+    genero: "hombre",
     edad: 23,
     eps: {
       eps: db.ciudad.findOne(
@@ -110,3 +110,40 @@ db.vacunaciones.insert(
       )._id
   }
 )
+
+db.vacunaciones.aggregate(
+  [
+    {$match: {}},
+    {
+      $lookup: {
+        from: "llamadas",
+        localField: "idLlamada",
+        foreignField: "_id",
+        as: "llamada"
+      }
+    },
+    {
+      $lookup: {
+        from: "personas",
+        localField: "llamada.persona",
+        foreignField: "_id",
+        as: "persona"
+      }
+    },
+    {
+      $lookup: {
+        from: "vacunas",
+        localField: "vacuna",
+        foreignField: "_id",
+        as: "vacuna"
+      }
+    },
+    {$group: {
+      _id: {
+        nombre: "$vacuna.nombre",
+        llamada: "$llamada",
+        persona: "$persona"
+      },
+    }}
+  ]).pretty()
+
