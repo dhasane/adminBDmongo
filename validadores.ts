@@ -106,12 +106,12 @@ db.createCollection(
             description: 'must be a number and is required'
           },
           acepto: {
-            bsonType: 'boolean',
-            description: 'must be a boolean and is required'
-          }
+            bsonType: 'bool',
+            description: 'must be a bool and is required'
+          },
           asistira: {
-            bsonType: 'boolean',
-            description: 'must be a boolean and is required'
+            bsonType: 'bool',
+            description: 'must be a bool and is required'
           },
           cita: {
             bsonType: 'object',
@@ -184,12 +184,12 @@ db.createCollection(
             description: 'must be a date and is required'
           },
           reaccion: {
-            bsonType: 'boolean',
-            description: 'must be a boolean and is required'
+            bsonType: 'bool',
+            description: 'must be a bool and is required'
           },
           acompanhado: {
-            bsonType: 'boolean',
-            description: 'must be a boolean and is required'
+            bsonType: 'bool',
+            description: 'must be a bool and is required'
           },
           vacuna: {
             bsonType: 'objectId',
