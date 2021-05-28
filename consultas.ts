@@ -140,3 +140,42 @@ db.vacunaciones.aggregate(
                 }}
     }}
   ]).pretty()
+
+/**
+* 3rd
+**/
+db.personas.aggregate(
+  [
+    {$match: {}},
+    {
+      $lookup: {
+        from: "llamadas",
+        localField: "_id",
+        foreignField: "persona",
+        as: "llamadas"
+      }
+    }
+  ]).forEach((usuario) => {
+    usuario.llamadas.forEach((llamada) => {
+
+	var numllamadas = db.vacunaciones.find({idLlamada: "$llamada.id"}).count();
+	var ciudad = db.ciudad.findOne({_id: usuario.ciudad},{_id:0, nombre:1});
+	if(numllamadas>0)var llamadas= "SI"
+	else var llamadas ="NO"; 
+	if(llamada.acepto)var asist = "SI";
+	else var asist = "NO";
+
+	printjson({
+	nombre: usuario.nombre,
+	edad:	usuario.edad,
+	llamado: llamadas,
+	confirmo_asistencia:asist,
+	ciudad:	ciudad.nombre
+	
+	});
+
+      if(db.vacunaciones.find({idLlamada: "$llamada.id"}).count() !== 0) {
+        printjson(usuario);
+      }
+    })
+  })
