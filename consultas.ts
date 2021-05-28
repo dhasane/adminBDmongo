@@ -66,6 +66,10 @@ db.vacunaciones.find().forEach( (elem) => {
 
   var reacciones_vacuna = db.vacunaciones.findOne({idLlamada: id_llamada}).reacciones;
 
+  if (reacciones_vacuna.length == 0) {
+    reacciones_vacuna = "ninguna";
+  }
+
   printjson(
     {
       vacuna: nombre_vacuna.nombre,
