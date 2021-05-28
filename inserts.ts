@@ -159,7 +159,7 @@ db.vacunaciones.insert(
       {_id: 1}
     )._id,
     fecha: new Date(),
-    reaccion: false,
+    reacciones: [],
     acompanhado: true,
     vacuna:
       db.vacunas.findOne(
@@ -181,7 +181,9 @@ db.vacunaciones.insert(
       {_id: 1}
     )._id,
     fecha: new Date(),
-    reaccion: false,
+    reacciones: [
+      "mareo"
+    ],
     acompanhado: true,
     vacuna:
       db.vacunas.findOne(

@@ -176,7 +176,7 @@ db.createCollection(
         required: [
           'idLlamada',
           'fecha',
-          'reaccion',
+          'reacciones',
           'acompanhado',
           'vacuna'
         ],
@@ -189,9 +189,13 @@ db.createCollection(
             bsonType: 'date',
             description: 'must be a date and is required'
           },
-          reaccion: {
-            bsonType: 'bool',
-            description: 'must be a bool and is required'
+          reacciones: {
+            bsonType: 'array',
+            description: 'reacciones must be an array and is required',
+            items: {
+              bsonType: 'string',
+              description: 'must be a string and is required'
+            }
           },
           acompanhado: {
             bsonType: 'bool',
