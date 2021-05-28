@@ -153,7 +153,7 @@ db.personas.aggregate(
     }
   ]).forEach((usuario) => {
     usuario.llamadas.forEach((llamada) => {
-      // printjson(llamada);
+
 	var numllamadas = db.vacunaciones.find({idLlamada: "$llamada.id"}).count();
 	var ciudad = db.ciudad.findOne({_id: usuario.ciudad},{_id:0, nombre:1});
 	if(numllamadas>0)var llamadas= "SI"
@@ -170,7 +170,6 @@ db.personas.aggregate(
 	
 	});
 
-      printjson(db.vacunaciones.find({idLlamada: "$llamada.id"}).count());
       if(db.vacunaciones.find({idLlamada: "$llamada.id"}).count() !== 0) {
         printjson(usuario);
       }
