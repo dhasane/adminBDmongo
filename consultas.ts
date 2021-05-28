@@ -104,3 +104,61 @@ db.vacunaciones.find().forEach( (elem) =>
         )
     }
 )
+
+db.vacunaciones.aggregate(
+  [
+    {$match: {}},
+    {
+      $lookup: {
+        from: "llamadas",
+        localField: "idLlamada",
+        foreignField: "_id",
+        as: "llamada"
+      }
+    },
+    {
+      $lookup: {
+        from: "centrosVacunacion",
+        localField: "llamada.cita.centroVacunacion",
+        foreignField: "_id",
+        as: "centroVacunacion"
+      }
+    },
+    {
+        $lookup:{
+            from: "personas",
+            localField: "llamada.persona",
+            foreignField: "_id",
+            as: "persona"
+        }
+    },
+    {
+        $lookup: {
+            from:"ciudad",
+            localField: "persona.ciudad",
+            foreignField: "_id",
+            as: "city"
+        }
+    },
+      
+    {$group: {
+      _id: {
+
+            fecha: db.vacunaciones.find({},{_id:0,fecha:1}).sort({fecha:-1}).limit(1),,
+            nombre: "$centroVacunacion.nombre",
+            ciudad:  "$city.nombre"
+      },
+      cantidad: {$sum: 1},
+      cotizantes: {$sum: {$cond: {if: {$in: ["cotizante", "$persona.eps.tipo"]},
+                         then: 1,
+                         else: 0
+                        }
+                }},
+      beneficiarios: {$sum: {$cond: {if: {$in: ["beneficiario", "$persona.eps.tipo"]},
+                         then: 1,
+                         else: 0
+                        }
+                }}
+      
+    }}
+  ]).pretty()
