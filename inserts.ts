@@ -66,38 +66,6 @@ db.centrosVacunacion.insertMany(
   ]
 )
 
-db.personas.insert(
-  {
-    tipoDocumento: "CC",
-    nombre: "Albin Yakitory",
-    documento: "123412123",
-    ciudad: db.ciudad.findOne(
-      {
-        nombre: "Bogota",
-      },
-      {_id: 1}
-    )._id,
-    genero: "hombre",
-    edad: 23,
-    eps: {
-      eps: db.eps.findOne(
-        {
-          nombre: "Sanitas",
-        },
-        {_id: 1}
-      )._id,
-      fechaAfiliacion: new Date(),
-      tipo: "cotizante"
-    },
-    telefonos: [
-      {
-        descripcion: "descripcion",
-        numero: "numerooo"
-      }
-    ]
-  }
-)
-
 db.personas.insertOne(
   {
     tipoDocumento: "CC",
@@ -205,46 +173,6 @@ db.personas.insertOne(
       {
         descripcion: "numero contacto",
         numero: "3134145670"
-      }
-    ]
-  }
-)
-
-db.personas.insertOne(
-  {
-    tipoDocumento: "CC",
-    nombre: "Ariel",
-    documento: "100032290",
-    ciudad: db.ciudad.findOne(
-      {
-        nombre: "Bogota",
-      },
-      {_id: 1}
-    )._id,
-    genero: "mujer",
-    edad: 18,
-    eps: {
-      eps: db.eps.findOne(
-        {
-          nombre: "Cafesalud",
-        },
-        {_id: 1}
-      )._id,
-      fechaAfiliacion: new Date(),
-      tipo: "beneficiario"
-    },
-    telefonos: [
-      {
-        descripcion: "numero celular",
-        numero: "3153122403"
-      },
-      {
-        descripcion: "telefono fijo",
-        numero: "7583348"
-      },
-      {
-        descripcion: "numero contacto",
-        numero: "3123207834"
       }
     ]
   }
@@ -620,7 +548,7 @@ db.personas.insertOne(
   {
     tipoDocumento: "CC",
     nombre: "Elizabeth",
-    documento: "1001823479",
+    documento: "10011823479",
     ciudad: db.ciudad.findOne(
       {
         nombre: "Duitama",
