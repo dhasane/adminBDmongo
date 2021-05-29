@@ -826,46 +826,6 @@ db.personas.insertOne(
 
 db.personas.insertOne(
   {
-    tipoDocumento: "CC",
-    nombre: "Javier",
-    documento: "44311819",
-    ciudad: db.ciudad.findOne(
-      {
-        nombre: "Bogota",
-      },
-      {_id: 1}
-    )._id,
-    genero: "hombre",
-    edad: 70,
-    eps: {
-      eps: db.eps.findOne(
-        {
-          nombre: "Famisanar",
-        },
-        {_id: 1}
-      )._id,
-      fechaAfiliacion: new Date(),
-      tipo: "cotizante"
-    },
-    telefonos: [
-      {
-        descripcion: "numero celular",
-        numero: "3182431828"
-      },
-      {
-        descripcion: "telefono fijo",
-        numero: "7799377"
-      },
-      {
-        descripcion: "numero contacto",
-        numero: "3137799693"
-      }
-    ]
-  }
-)
-
-db.personas.insertOne(
-  {
     tipoDocumento: "CE",
     nombre: "Laura",
     documento: "1020664210",
@@ -1128,21 +1088,6 @@ db.vacunaciones.insert(
     ],
     acompanhado: true,
     vacuna: db.vacunas.findOne({nombre: "AstraZeneca"})._id
-  }
-)
-
-db.vacunaciones.insertOne(
-  {
-    idLlamada: db.llamadas.findOne(
-      {
-        date: fecha2,
-        persona: db.personas.findOne({tipoDocumento: "CC", documento:  "123412123"})._id ,
-      }
-    )._id,
-    fecha: new Date("2021, 04, 03"),
-    reacciones: ["Mareo"],
-    acompanhado: false,
-    vacuna: db.vacunas.findOne({nombre:"Rotavirus"})._id
   }
 )
 
